@@ -13,9 +13,10 @@ public class Moto {
 
     }
 
-    public Moto(TipoMoto modelo, String placa, List<MotoPatio> historicoEntrada) {
+    public Moto(TipoMoto modelo, String placa, String chassi, List<MotoPatio> historicoEntrada) {
         this.modelo = modelo;
         this.placa = placa;
+        this.chassi = chassi;
         this.historicoEntrada = historicoEntrada;
     }
 
@@ -31,6 +32,9 @@ public class Moto {
 
     @Column(name = "placa",nullable = false,length = 10)
     private String placa;
+
+    @Column(name = "chassi",nullable = false,length = 30)
+    private String chassi;
 
     @OneToMany(mappedBy = "moto")
     private List<MotoPatio> historicoEntrada;
@@ -64,5 +68,13 @@ public class Moto {
 
     public void setModelo(TipoMoto modelo) {
         this.modelo = modelo;
+    }
+
+    public String getChassi() {
+        return chassi;
+    }
+
+    public void setChassi(String chassi) {
+        this.chassi = chassi;
     }
 }
