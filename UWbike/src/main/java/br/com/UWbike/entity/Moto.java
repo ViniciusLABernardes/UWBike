@@ -77,4 +77,16 @@ public class Moto {
     public void setChassi(String chassi) {
         this.chassi = chassi;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Moto outro = (Moto) obj;
+
+        return this.idMoto == outro.idMoto && this.modelo.equals(outro.modelo)
+                && this.placa.equals(outro.placa) && this.chassi.equals(outro.chassi);
+    }
 }
+

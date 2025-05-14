@@ -12,7 +12,7 @@ public class Patio {
     public Patio(){
 
     }
-    public Patio(String logradouro, int numero, String complemento, String cep, String cidade, String uf, String pais) {
+    public Patio(String logradouro, int numero, String complemento, String cep, String cidade, String uf, String pais, int lotacao) {
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
@@ -20,6 +20,7 @@ public class Patio {
         this.cidade = cidade;
         this.uf = uf;
         this.pais = pais;
+        this.lotacao = lotacao;
     }
 
     @Id
@@ -48,6 +49,9 @@ public class Patio {
     @Column(name = "pais",nullable = false,length = 100)
     private String pais;
 
+    @Column(name = "lotacao_max",nullable = false)
+    private int lotacao;
+
     @OneToMany(mappedBy = "patio")
     private List<MotoPatio> entradas;
 
@@ -57,6 +61,14 @@ public class Patio {
 
     public void setEntradas(List<MotoPatio> entradas) {
         this.entradas = entradas;
+    }
+
+    public int getLotacao() {
+        return lotacao;
+    }
+
+    public void setLotacao(int lotacao) {
+        this.lotacao = lotacao;
     }
 
     public long getIdPatio() {
@@ -121,5 +133,19 @@ public class Patio {
 
     public void setPais(String pais) {
         this.pais = pais;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Patio outro = (Patio) obj;
+
+        return this.idPatio == outro.idPatio
+                && this.logradouro.equals(outro.logradouro) && this.numero == outro.numero &&
+                this.complemento.equals(outro.complemento) && this.cep.equals(outro.cep)
+                && this.cidade.equals(outro.cidade) && this.uf.equals(outro.uf)
+                && this.pais.equals(outro.pais) && this.lotacao == outro.lotacao;
     }
 }
