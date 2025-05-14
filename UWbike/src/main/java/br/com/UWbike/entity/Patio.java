@@ -28,7 +28,7 @@ public class Patio {
     @GeneratedValue(generator = "patio_seq",strategy = GenerationType.SEQUENCE)
     private long idPatio;
 
-    @Column(name = "logradouro",nullable = false,length = 300)
+    @Column(name = "logradouro",nullable = false,length = 450)
     private String logradouro;
 
     @Column(name ="numero",nullable = false)

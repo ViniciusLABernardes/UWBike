@@ -29,7 +29,6 @@ public class Moto {
     @Column(name = "modelo",nullable = false,length = 100)
     private TipoMoto modelo;
 
-
     @Column(name = "placa",nullable = false,length = 10)
     private String placa;
 
@@ -38,6 +37,7 @@ public class Moto {
 
     @OneToMany(mappedBy = "moto")
     private List<MotoPatio> historicoEntrada;
+
 
     public List<MotoPatio> getHistoricoEntrada() {
         return historicoEntrada;
@@ -79,6 +79,12 @@ public class Moto {
     }
 
     @Override
+    public String toString(){
+        return "id moto: " + getId_moto() + ", modelo: " + getModelo() + ", placa: " + getPlaca() +
+                ", " + getChassi();
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
@@ -88,5 +94,6 @@ public class Moto {
         return this.idMoto == outro.idMoto && this.modelo.equals(outro.modelo)
                 && this.placa.equals(outro.placa) && this.chassi.equals(outro.chassi);
     }
+
 }
 
