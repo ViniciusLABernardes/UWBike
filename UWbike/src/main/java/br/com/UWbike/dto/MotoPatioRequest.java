@@ -1,44 +1,32 @@
-package br.com.UWbike.entity;
+package br.com.UWbike.dto;
 
-import jakarta.persistence.*;
+import br.com.UWbike.entity.Moto;
+import br.com.UWbike.entity.Patio;
+import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDateTime;
 
-
-@Entity
-@Table(name = "tb_moto_patio")
-public class MotoPatio {
-    public MotoPatio(){
+public class MotoPatioRequest {
+    public MotoPatioRequest(){
 
     }
-    public MotoPatio(Long id, Moto moto, Patio patio, LocalDateTime dataHoraEntrada, LocalDateTime dataHoraSaida){
-        this.id = id;
+    public MotoPatioRequest(Moto moto, Patio patio, LocalDateTime dataHoraEntrada, LocalDateTime dataHoraSaida){
         this.moto = moto;
         this.patio = patio;
         this.dataHoraEntrada = dataHoraEntrada;
         this.dataHoraSaida = dataHoraSaida;
     }
-    public MotoPatio(int idMoto, int idPatio, LocalDateTime dataEntrada) {
 
-        this.dataHoraEntrada = dataHoraEntrada;
-    }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "id_moto", nullable = false)
+    @NotBlank(message = "O id da moto é obrigatório")
     private Moto moto;
-
-    @ManyToOne
-    @JoinColumn(name = "id_patio", nullable = false)
+    @NotBlank(message = "O id do pátio é obrigatório")
     private Patio patio;
 
-    @Column(name = "data_hora_entrada", nullable = false)
+    @NotBlank(message = "A data e hora de entrada são obrigatorios")
     private LocalDateTime dataHoraEntrada;
-    @Column(name = "data_hora_saida")
+
     private LocalDateTime dataHoraSaida;
+
 
     public Moto getMoto() {
         return moto;
