@@ -8,9 +8,9 @@
 
 
 ### O Sistema atualmente conta com:
-#### - Gerenciamento de motos(cadastro/atualização de dados/leitura de dados e remoção);
-#### - Gerenciamento de pátios(cadastro/atualização de dados/leitura de dados e remoção);
-#### - Gerenciamento de motos no pátio(cadastro/remoção/leitura de dados);
+#### - Gerenciamento de motos(cadastro/atualização/leitura de dados e remoção);
+#### - Gerenciamento de pátios(cadastro/atualização/leitura de dados e remoção);
+#### - Gerenciamento de motos no pátio(cadastro/atualização/leitura de dados);
 
 ## 💡 Objetivo
 Desenvolver uma aplicação que:
