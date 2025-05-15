@@ -39,6 +39,7 @@ Desenvolver uma aplicação que:
   - lotacao
     
 - MotoPatio
+#### OBS** Esta entidade foi criada pois queriamos uma tabela associativa que tivesse outros campos alem dos ids de cada tabela que serão associadas **
 - - moto
   - patio
   - dataHoraEntrada
