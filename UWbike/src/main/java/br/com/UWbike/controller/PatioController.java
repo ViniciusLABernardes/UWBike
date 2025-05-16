@@ -3,14 +3,13 @@ package br.com.UWbike.controller;
 import br.com.UWbike.dto.MotoResponseDto;
 import br.com.UWbike.dto.PatioRequestDto;
 import br.com.UWbike.dto.PatioResponseDto;
-import br.com.UWbike.entity.Moto;
 import br.com.UWbike.entity.Patio;
 import br.com.UWbike.exceptions.IdNaoEncontradoException;
-import br.com.UWbike.services.MotoService;
 import br.com.UWbike.services.PatioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -23,14 +22,13 @@ public class PatioController {
 
     @Autowired
     private PatioService patioService;
-    @Autowired
-    private MotoService motoService;
 
-    @PostMapping
+
+   @PostMapping
     public ResponseEntity<PatioResponseDto> cadastrarPatio(@Valid @RequestBody PatioRequestDto patioRequestDto){
 
-        Patio patio = new Patio(patioRequestDto.getLogradouro(), patioRequestDto.getNumero(), patioRequestDto.getCep(),
-                patioRequestDto.getComplemento(), patioRequestDto.getCidade(),
+        Patio patio = new Patio(patioRequestDto.getLogradouro(), patioRequestDto.getNumero(), patioRequestDto.getComplemento(),
+                patioRequestDto.getCep(), patioRequestDto.getCidade(),
                 patioRequestDto.getUf(), patioRequestDto.getPais(), patioRequestDto.getLotacao());
 
         Patio patioSalvo = patioService.salvarPatio(patio);

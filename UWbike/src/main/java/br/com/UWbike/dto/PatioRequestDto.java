@@ -1,8 +1,7 @@
 package br.com.UWbike.dto;
 
 import br.com.UWbike.entity.MotoPatio;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 import java.util.List;
 
@@ -25,19 +24,20 @@ public class PatioRequestDto {
     @Size(min = 6, max = 450, message = "O logradouro deve ter entre 6 e 450 caracteres")
     private String logradouro;
 
-    @NotBlank(message = "O numero é obrigatório")
-    @Size(min = 1, max = 7, message = "O numero deve ter entre 1 e 7 caracteres")
+    @NotNull(message = "O numero é obrigatório")
+    @Min(value = 1, message = "O número deve ser no mínimo 1")
+    @Max(value = 9999999, message = "O número deve ser no máximo 7 dígitos")
     private int numero;
 
-    @Size(min = 3, max = 255, message = "O complemento deve ter entre 3 e 255 caracteres")
+    @Size( max = 255, message = "O complemento deve ter no máximo 255 caracteres")
     private String complemento;
 
     @NotBlank(message = "O cep é obrigatório")
-    @Size(min = 1, max = 7, message = "O cep deve ter entre 5 e 15 caracteres")
+    //@Size(min = 1, max = 20, message = "O cep deve ter entre 5 e 15 caracteres")
     private String cep;
 
     @NotBlank(message = "A cidade é obrigatória")
-    @Size(min = 1, max = 7, message = "A cidade deve ter entre 3 e 100 caracteres")
+    @Size(min = 1, max = 100, message = "A cidade deve ter entre 3 e 100 caracteres")
     private String cidade;
 
     @NotBlank(message = "O UF é obrigatório")
@@ -48,7 +48,8 @@ public class PatioRequestDto {
     @Size(min = 1, max = 100, message = "O pais deve ter entre 3 e 100 caracteres")
     private String pais;
 
-    @NotBlank(message = "A lotação máxima é obrigatória")
+    @NotNull(message = "A lotação máxima é obrigatória")
+    @Min(value = 1, message = "a lotação deve ser no minimo de: 1")
     private int lotacao;
 
     private List<MotoPatio> entradas;

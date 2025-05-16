@@ -22,15 +22,15 @@ public class PatioService {
     private PatioRepository patioRepository;
 
     public Patio salvarPatio(Patio patio) {
-        Patio patioNovo = new Patio();
         try {
-            System.out.println("Patio cadastrado com sucesso!");
-            patioNovo = patioRepository.save(patio);
+
+            System.out.println("Complemento recebido: " + patio.getComplemento());
+            patioRepository.save(patio);
         } catch (Exception e) {
             System.out.println("Houve um erro ao tentar cadastrar o pátio:");
             e.printStackTrace();
         }
-        return patioNovo;
+        return patio;
     }
 
     public void removerPatio(Long id) throws IdNaoEncontradoException {

@@ -28,10 +28,10 @@ public class Moto {
     @Column(name = "modelo",nullable = false,length = 100)
     private String modelo;
 
-    @Column(name = "placa",nullable = false,length = 10)
+    @Column(name = "placa",nullable = false,length = 10,unique = true)
     private String placa;
 
-    @Column(name = "chassi",nullable = false,length = 30)
+    @Column(name = "chassi",nullable = false,length = 30,unique = true)
     private String chassi;
 
     @OneToMany(mappedBy = "moto",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
