@@ -21,27 +21,27 @@ public class MotoService {
             System.out.println("Moto cadastrada com sucesso!");
            motoNova = motoRepository.save(moto);
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            System.out.println("Houve um erro ao tentar cadastrar a moto");
+           e.printStackTrace();
         }
         return motoNova;
     }
 
-    public void removerMoto(Long id, Moto moto) throws IdNaoEncontradoException{
+    public void removerMoto(Long id) throws IdNaoEncontradoException{
         Moto motoAchada = motoRepository.findById(id)
                 .orElseThrow(() -> new IdNaoEncontradoException("Moto não encontrada"));
-        if(motoAchada.equals(moto)){
-            motoRepository.deleteById(id);
-            System.out.println("Moto: " + moto.getId_moto() + ", " + moto.getPlaca() + " deletada com sucesso!");
-        }else{
-            System.out.println("Moto especificada não condiz com a moto com o id inserido");
-        }
+
+                motoRepository.deleteById(id);
+
+            System.out.println("Moto: " + motoAchada.getId_moto() + ", " + motoAchada.getPlaca() + " deletada com sucesso!");
+
     }
 
     @Transactional
     public void atualizarDadosMoto(Long id, Moto moto) throws IdNaoEncontradoException{
         Moto motoAchada = motoRepository.findById(id)
                 .orElseThrow(() -> new IdNaoEncontradoException("Moto não encontrada"));
-        motoAchada.setModelo(moto.getModelo());
+
         motoAchada.setPlaca(moto.getPlaca());
 
         System.out.println("Moto: " + motoAchada.getId_moto() + ", "
@@ -49,10 +49,10 @@ public class MotoService {
 
     }
 
-    public Moto visualizarDadosMotoEspecifica(Long id)throws IdNaoEncontradoException {
-        Moto motoAchada = motoRepository.findById(id)
-                .orElseThrow(() -> new IdNaoEncontradoException("Moto não encontrada"));
-        return motoAchada;
+    public Optional<Moto> visualizarDadosMotoEspecifica(Long id) {
+      return motoRepository.findById(id);
+
+
     }
 
 }

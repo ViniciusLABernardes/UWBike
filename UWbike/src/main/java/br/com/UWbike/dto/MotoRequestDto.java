@@ -1,7 +1,6 @@
 package br.com.UWbike.dto;
 
 import br.com.UWbike.entity.MotoPatio;
-import br.com.UWbike.entity.TipoMoto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -14,16 +13,15 @@ public class MotoRequestDto {
 
     }
 
-    public MotoRequestDto(TipoMoto modelo, String placa, String chassi, List<MotoPatio> historicoEntrada) {
+    public MotoRequestDto(String modelo, String placa, String chassi) {
         this.modelo = modelo;
         this.placa = placa;
         this.chassi = chassi;
-        this.historicoEntrada = historicoEntrada;
     }
 
 
     @NotBlank(message = "O modelo é obrigatório")
-    private TipoMoto modelo;
+    private String modelo;
 
     @NotBlank(message = "A placa é obrigatória")
     @Size(min = 1, max = 10, message = "A placa deve ter entre 1 e 10 caracteres")
@@ -35,11 +33,11 @@ public class MotoRequestDto {
 
     private List<MotoPatio> historicoEntrada;
 
-    public TipoMoto getModelo() {
+    public String getModelo() {
         return modelo;
     }
 
-    public void setModelo(TipoMoto modelo) {
+    public void setModelo(String modelo) {
         this.modelo = modelo;
     }
 

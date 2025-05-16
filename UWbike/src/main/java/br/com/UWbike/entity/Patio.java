@@ -52,7 +52,7 @@ public class Patio {
     @Column(name = "lotacao_max",nullable = false)
     private int lotacao;
 
-    @OneToMany(mappedBy = "patio")
+    @OneToMany(mappedBy = "patio", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<MotoPatio> entradas;
 
     public List<MotoPatio> getEntradas() {

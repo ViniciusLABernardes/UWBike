@@ -13,11 +13,11 @@ public class Moto {
 
     }
 
-    public Moto(TipoMoto modelo, String placa, String chassi, List<MotoPatio> historicoEntrada) {
+    public Moto(String modelo, String placa, String chassi) {
         this.modelo = modelo;
         this.placa = placa;
         this.chassi = chassi;
-        this.historicoEntrada = historicoEntrada;
+
     }
 
     @Id
@@ -25,9 +25,8 @@ public class Moto {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "moto_seq")
     private long idMoto;
 
-    @Enumerated(value = EnumType.STRING)
     @Column(name = "modelo",nullable = false,length = 100)
-    private TipoMoto modelo;
+    private String modelo;
 
     @Column(name = "placa",nullable = false,length = 10)
     private String placa;
@@ -35,7 +34,7 @@ public class Moto {
     @Column(name = "chassi",nullable = false,length = 30)
     private String chassi;
 
-    @OneToMany(mappedBy = "moto")
+    @OneToMany(mappedBy = "moto",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<MotoPatio> historicoEntrada;
 
 
@@ -62,11 +61,11 @@ public class Moto {
     public void setPlaca(String placa) {
         this.placa = placa;
     }
-    public TipoMoto getModelo() {
+    public String getModelo() {
         return modelo;
     }
 
-    public void setModelo(TipoMoto modelo) {
+    public void setModelo(String modelo) {
         this.modelo = modelo;
     }
 

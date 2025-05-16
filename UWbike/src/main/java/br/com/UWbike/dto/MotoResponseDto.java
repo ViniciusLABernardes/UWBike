@@ -1,8 +1,6 @@
 package br.com.UWbike.dto;
 
 import br.com.UWbike.entity.MotoPatio;
-import br.com.UWbike.entity.TipoMoto;
-import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -12,16 +10,16 @@ public class MotoResponseDto {
 
     }
 
-    public MotoResponseDto(TipoMoto modelo, String placa, String chassi, List<MotoPatio> historicoEntrada) {
+    public MotoResponseDto(long idMoto,String modelo, String placa, String chassi) {
+        this.idMoto = idMoto;
         this.modelo = modelo;
         this.placa = placa;
         this.chassi = chassi;
-        this.historicoEntrada = historicoEntrada;
     }
 
     private long idMoto;
 
-    private TipoMoto modelo;
+    private String modelo;
 
     private String placa;
 
@@ -37,11 +35,11 @@ public class MotoResponseDto {
         this.idMoto = idMoto;
     }
 
-    public TipoMoto getModelo() {
+    public String getModelo() {
         return modelo;
     }
 
-    public void setModelo(TipoMoto modelo) {
+    public void setModelo(String modelo) {
         this.modelo = modelo;
     }
 

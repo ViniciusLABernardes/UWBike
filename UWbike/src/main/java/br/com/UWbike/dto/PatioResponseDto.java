@@ -10,7 +10,8 @@ public class PatioResponseDto {
     public PatioResponseDto(){
 
     }
-    public PatioResponseDto(String logradouro, int numero, String complemento, String cep, String cidade, String uf, String pais, int lotacao) {
+    public PatioResponseDto(long idPatio,String logradouro, int numero, String complemento, String cep, String cidade, String uf, String pais, int lotacao) {
+        this.idPatio = idPatio;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;

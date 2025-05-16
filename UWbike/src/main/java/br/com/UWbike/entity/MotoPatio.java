@@ -11,27 +11,22 @@ public class MotoPatio {
     public MotoPatio(){
 
     }
-    public MotoPatio(Long id, Moto moto, Patio patio, LocalDateTime dataHoraEntrada, LocalDateTime dataHoraSaida){
-        this.id = id;
+    public MotoPatio( Moto moto, Patio patio, LocalDateTime dataHoraEntrada){
         this.moto = moto;
         this.patio = patio;
         this.dataHoraEntrada = dataHoraEntrada;
-        this.dataHoraSaida = dataHoraSaida;
     }
-    public MotoPatio(int idMoto, int idPatio, LocalDateTime dataEntrada) {
 
-        this.dataHoraEntrada = dataHoraEntrada;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_moto", nullable = false)
     private Moto moto;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_patio", nullable = false)
     private Patio patio;
 
