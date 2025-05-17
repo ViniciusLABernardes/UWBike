@@ -1,5 +1,6 @@
 package br.com.UWbike.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -24,10 +25,12 @@ public class MotoPatio {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_moto", nullable = false)
+    @JsonBackReference("motoRef")
     private Moto moto;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_patio", nullable = false)
+    @JsonBackReference("patioRef")
     private Patio patio;
 
     @Column(name = "data_hora_entrada", nullable = false)
@@ -65,5 +68,13 @@ public class MotoPatio {
 
     public void setDataHoraSaida(LocalDateTime dataHoraSaida) {
         this.dataHoraSaida = dataHoraSaida;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

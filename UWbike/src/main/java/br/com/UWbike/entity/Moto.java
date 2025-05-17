@@ -1,5 +1,6 @@
 package br.com.UWbike.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -35,6 +36,7 @@ public class Moto {
     private String chassi;
 
     @OneToMany(mappedBy = "moto",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference("motoRef")
     private List<MotoPatio> historicoEntrada;
 
 

@@ -24,7 +24,7 @@ public class MotoPatioService {
     @Autowired
     private PatioRepository patioRepository;
 
-    public MotoPatio adicionarMotoAoPatio(Long idMoto, Long idPatio, LocalDateTime dataEntrada) throws IdNaoEncontradoException {
+    public MotoPatio adicionarMotoAoPatio(Long idMoto, Long idPatio) throws IdNaoEncontradoException {
         Moto moto = motoRepository.findById(idMoto)
                 .orElseThrow(() -> new IdNaoEncontradoException("Moto com ID " + idMoto + " não encontrada."));
 
@@ -34,18 +34,18 @@ public class MotoPatioService {
         MotoPatio motoPatio = new MotoPatio();
         motoPatio.setMoto(moto);
         motoPatio.setPatio(patio);
-        motoPatio.setDataHoraEntrada(dataEntrada);
+        motoPatio.setDataHoraEntrada(LocalDateTime.now());
 
         return motoPatioRepository.save(motoPatio);
     }
 
 
-    public MotoPatio adicionarSaidaMoto(Long idMoto, LocalDateTime dataSaida) throws IdNaoEncontradoException{
+    public MotoPatio adicionarSaidaMoto(Long idMoto) throws IdNaoEncontradoException{
         MotoPatio entradaAberta = motoPatioRepository
                 .findEntradaAbertaDaMoto(idMoto)
                 .orElseThrow(() -> new IdNaoEncontradoException("Nenhuma entrada em aberto encontrada para a moto ID " + idMoto));
 
-        entradaAberta.setDataHoraSaida(dataSaida);
+        entradaAberta.setDataHoraSaida(LocalDateTime.now());
         return motoPatioRepository.save(entradaAberta);
     }
 
