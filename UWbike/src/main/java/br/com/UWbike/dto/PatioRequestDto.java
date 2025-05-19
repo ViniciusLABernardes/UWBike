@@ -26,7 +26,7 @@ public class PatioRequestDto {
 
     @NotNull(message = "O numero é obrigatório")
     @Min(value = 1, message = "O número deve ser no mínimo 1")
-    @Max(value = 9999999, message = "O número deve ser no máximo 7 dígitos")
+    @Max(value = 999999, message = "O número deve ser no máximo 7 dígitos")
     private int numero;
 
     @Size( max = 255, message = "O complemento deve ter no máximo 255 caracteres")

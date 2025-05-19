@@ -43,8 +43,8 @@ public class MotoPatioController {
         }
     }
 
-    @PutMapping
-    public ResponseEntity<MotoPatioResponseDto> adicionarSaidaDeMoto(@RequestParam Long id){
+    @PutMapping("/{id}")
+    public ResponseEntity<MotoPatioResponseDto> adicionarSaidaDeMoto(@PathVariable Long id){
         try {
             MotoPatio motoPatio = motoPatioService.adicionarSaidaMoto(id);
 

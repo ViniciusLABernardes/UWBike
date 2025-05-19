@@ -34,7 +34,7 @@ public class PatioController {
         Patio patioSalvo = patioService.salvarPatio(patio);
 
         return ResponseEntity.ok(new PatioResponseDto(patioSalvo.getIdPatio(), patioSalvo.getLogradouro(),
-                patioSalvo.getNumero(), patioSalvo.getCep(), patioSalvo.getComplemento(),
+                patioSalvo.getNumero(),patioSalvo.getComplemento(), patioSalvo.getCep(),
                 patioSalvo.getCidade(), patioSalvo.getUf(), patioSalvo.getPais(), patioSalvo.getLotacao()));
     }
 

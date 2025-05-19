@@ -58,6 +58,17 @@ public class Patio {
     @JsonManagedReference("patioRef")
     private List<MotoPatio> entradas;
 
+    @OneToMany(mappedBy = "patio", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Ancora> ancoras;
+
+    public List<Ancora> getAncoras() {
+        return ancoras;
+    }
+
+    public void setAncoras(List<Ancora> ancoras) {
+        this.ancoras = ancoras;
+    }
+
     public List<MotoPatio> getEntradas() {
         return entradas;
     }
@@ -144,11 +155,6 @@ public class Patio {
         if (obj == null || getClass() != obj.getClass()) return false;
 
         Patio outro = (Patio) obj;
-
-        return this.idPatio == outro.idPatio
-                && this.logradouro.equals(outro.logradouro) && this.numero == outro.numero &&
-                this.complemento.equals(outro.complemento) && this.cep.equals(outro.cep)
-                && this.cidade.equals(outro.cidade) && this.uf.equals(outro.uf)
-                && this.pais.equals(outro.pais) && this.lotacao == outro.lotacao;
+        return idPatio == outro.idPatio;
     }
 }
