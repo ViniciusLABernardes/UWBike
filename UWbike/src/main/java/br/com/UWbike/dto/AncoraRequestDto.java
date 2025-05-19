@@ -19,11 +19,9 @@ public class AncoraRequestDto {
 
 
     @NotNull(message = "O x é obrigatório")
-    @Min(value = 1, message = "O número deve ser no mínimo 1")
     @Max(value = 999999, message = "O número deve ser no máximo 7 dígitos")
     private double x;
     @NotNull(message = "O y é obrigatório")
-    @Min(value = 1, message = "O número deve ser no mínimo 1")
     @Max(value = 999999, message = "O número deve ser no máximo 7 dígitos")
     private double y;
     @NotNull(message = "O id do pátio é obrigatório")

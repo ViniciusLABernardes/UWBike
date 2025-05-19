@@ -1,7 +1,9 @@
 package br.com.UWbike.controller;
 
+import br.com.UWbike.dto.AncoraRequestDto;
 import br.com.UWbike.dto.MotoPatioRequestDto;
 import br.com.UWbike.dto.MotoPatioResponseDto;
+import br.com.UWbike.dto.PosicaoRequestDto;
 import br.com.UWbike.entity.Moto;
 import br.com.UWbike.entity.MotoPatio;
 import br.com.UWbike.entity.Patio;
@@ -30,6 +32,8 @@ public class MotoPatioController {
     @Autowired
     private PatioService patioService;
 
+
+
     @PostMapping
     public ResponseEntity<MotoPatioResponseDto> adicionarMotoAoPatio(@RequestBody @Valid MotoPatioRequestDto dto) {
         try {
@@ -52,6 +56,20 @@ public class MotoPatioController {
                     motoPatio.getDataHoraEntrada(),motoPatio.getDataHoraSaida()));
 
         } catch (IdNaoEncontradoException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
+    @GetMapping("/posicao")
+    public ResponseEntity<Moto> calcularPosicaoMoto(@Valid @RequestBody PosicaoRequestDto posicaoRequestDto) {
+
+        try {
+            Moto motoSimulada = motoPatioService.calcularPosicaoMoto(posicaoRequestDto.getIdMoto(), posicaoRequestDto.getIdPatio(),
+                    posicaoRequestDto.getD1(), posicaoRequestDto.getD2(),
+                    posicaoRequestDto.getD3(), posicaoRequestDto.getD4());
+            return ResponseEntity.ok(motoSimulada);
+        } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
     }

@@ -20,6 +20,14 @@ public class Moto {
         this.chassi = chassi;
 
     }
+    public Moto(String modelo, String placa, String chassi, double posicaoX, double posicaoY) {
+        this.posicaoX = posicaoX;
+        this.posicaoY = posicaoY;
+        this.modelo = modelo;
+        this.placa = placa;
+        this.chassi = chassi;
+
+    }
 
     @Id
     @Column(name = "id_moto")
@@ -34,6 +42,28 @@ public class Moto {
 
     @Column(name = "chassi",nullable = false,length = 30,unique = true)
     private String chassi;
+
+    @Transient
+    private double posicaoX;
+
+    @Transient
+    private double posicaoY;
+
+    public double getPosicaoX() {
+        return posicaoX;
+    }
+
+    public void setPosicaoX(double posicaoX) {
+        this.posicaoX = posicaoX;
+    }
+
+    public double getPosicaoY() {
+        return posicaoY;
+    }
+
+    public void setPosicaoY(double posicaoY) {
+        this.posicaoY = posicaoY;
+    }
 
     @OneToMany(mappedBy = "moto",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference("motoRef")
