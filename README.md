@@ -11,6 +11,7 @@
 #### - Gerenciamento de motos(cadastro/atualização/leitura de dados e remoção);
 #### - Gerenciamento de pátios(cadastro/atualização/leitura de dados e remoção);
 #### - Gerenciamento de motos no pátio(cadastro/atualização/leitura de dados);
+#### - Gerenciamento de âncoras do pátio(cadastro/atualização/leitura de dados e remoção)
 
 ## 💡 Objetivo
 Desenvolver uma aplicação que:
@@ -21,13 +22,13 @@ Desenvolver uma aplicação que:
 ## ⚙️ Etapas para rodar o projeto:
 
 ## Entidades do projeto:
-- Moto
+- ### Moto
 - - idMoto
   - modelo
   - placa
   - chassi
     
-- Patio
+- ### Patio
 - - idPatio
   - logradouro
   - numero
@@ -38,9 +39,16 @@ Desenvolver uma aplicação que:
   - pais
   - lotacao
     
-- MotoPatio
-#### OBS** Esta entidade foi criada pois queriamos uma tabela associativa que tivesse outros campos alem dos ids de cada tabela que serão associadas **
+- ### MotoPatio
+##### OBS** Esta entidade foi criada pois queriamos uma tabela associativa que tivesse outros campos alem dos ids de cada tabela que serão associadas **
 - - moto
   - patio
   - dataHoraEntrada
   - dataHoraSaida
+ 
+- ### Ancora
+- - id
+  - x
+  - y
+
+ 
