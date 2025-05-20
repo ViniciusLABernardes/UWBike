@@ -67,7 +67,7 @@ public class MotoPatioService {
             throw new RuntimeException("É necessário ter pelo menos 3 âncoras no pátio.");
         }
 
-        // Pegando as 4 primeiras âncoras do pátio
+        // Pegando as 3 primeiras âncoras do pátio
         Ancora a1 = ancoras.get(0);
         Ancora a2 = ancoras.get(1);
         Ancora a3 = ancoras.get(2);
