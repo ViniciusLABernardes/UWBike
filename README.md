@@ -27,6 +27,8 @@ Desenvolver uma aplicação que:
   - modelo
   - placa
   - chassi
+  - posicaoX   (Ambas as posições são atributos Transient, pois só serão armazenadas em memória na hora que a função calcularPosicaoMoto for acionada)
+  - posicaoY
     
 - ### Patio
 - - idPatio
@@ -51,4 +53,18 @@ Desenvolver uma aplicação que:
   - x
   - y
 
+
+## Requisições da parte de gerenciamento de moto:
+
+### Cadastrar moto:
+
  
+![cadastroMoto](https://github.com/user-attachments/assets/ad0dd6b7-3109-4d77-bf3f-be2d63fddb9f)
+
+### Visualizar moto especificada por id:
+
+![lerMoto](https://github.com/user-attachments/assets/95e47008-4385-4596-9699-3c8a0fce4123)
+
+### Atualizar placa da moto:
+![attMoto](https://github.com/user-attachments/assets/d6b30265-65a6-4c23-b431-4f34184635d4)
+
