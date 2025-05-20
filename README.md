@@ -23,7 +23,7 @@ Desenvolver uma aplicação que:
 
 ## ⚙️ Etapas para rodar o projeto:
 ### 1 - Instale o JDK 21
-### 2 - Teste as requisições pelo postman/navegador/etc...
+### 2 - Teste as requisições pelo postman/navegador/etc assim como foram feitas nos prints demonstrativos
 
 
 ## Entidades do projeto:
