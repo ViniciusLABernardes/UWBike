@@ -67,9 +67,9 @@ public class MotoPatioController {
         try {
             Moto motoSimulada = motoPatioService.calcularPosicaoMoto(posicaoRequestDto.getIdMoto(), posicaoRequestDto.getIdPatio(),
                     posicaoRequestDto.getD1(), posicaoRequestDto.getD2(),
-                    posicaoRequestDto.getD3(), posicaoRequestDto.getD4());
+                    posicaoRequestDto.getD3());
             return ResponseEntity.ok(motoSimulada);
-        } catch (RuntimeException e) {
+        } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
     }

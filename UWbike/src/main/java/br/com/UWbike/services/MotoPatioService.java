@@ -56,22 +56,21 @@ public class MotoPatioService {
     }
 
 
-    public Moto calcularPosicaoMoto(long idMoto,long idPatio, double d1, double d2, double d3, double d4) {
+    public Moto calcularPosicaoMoto(long idMoto,long idPatio, double d1, double d2, double d3) {
         Patio patio = patioRepository.findById(idPatio)
                 .orElseThrow(() -> new RuntimeException("Pátio não encontrado"));
 
        Moto moto = motoRepository.findById(idMoto) .orElseThrow(() -> new RuntimeException("Moto não encontrada"));
         List<Ancora> ancoras = patio.getAncoras();
 
-        if (ancoras.size() < 4) {
-            throw new RuntimeException("É necessário ter pelo menos 4 âncoras no pátio.");
+        if (ancoras.size() < 3) {
+            throw new RuntimeException("É necessário ter pelo menos 3 âncoras no pátio.");
         }
 
         // Pegando as 4 primeiras âncoras do pátio
         Ancora a1 = ancoras.get(0);
         Ancora a2 = ancoras.get(1);
         Ancora a3 = ancoras.get(2);
-        Ancora a4 = ancoras.get(3);
 
         // Coordenadas das âncoras
         double x1 = a1.getX(), y1 = a1.getY();

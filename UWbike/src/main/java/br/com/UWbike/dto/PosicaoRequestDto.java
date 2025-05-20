@@ -11,7 +11,6 @@ public class PosicaoRequestDto {
         private double d1;
         private double d2;
         private double d3;
-        private double d4;
 
 
         public long getIdMoto() { return idMoto; }
@@ -29,8 +28,6 @@ public class PosicaoRequestDto {
         public double getD3() { return d3; }
         public void setD3(double d3) { this.d3 = d3; }
 
-        public double getD4() { return d4; }
-        public void setD4(double d4) { this.d4 = d4; }
 
 
 }

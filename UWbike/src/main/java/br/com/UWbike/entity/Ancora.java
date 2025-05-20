@@ -25,6 +25,7 @@ public class Ancora {
 
     @ManyToOne
     @JoinColumn(name = "id_patio")
+    @JsonBackReference("ancoraRef")
     private Patio patio;
 
     public Patio getPatio() {

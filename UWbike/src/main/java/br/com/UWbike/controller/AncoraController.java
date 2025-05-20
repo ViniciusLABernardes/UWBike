@@ -5,6 +5,7 @@ import br.com.UWbike.dto.AncoraResponseDto;
 import br.com.UWbike.entity.Ancora;
 import br.com.UWbike.exceptions.IdNaoEncontradoException;
 import br.com.UWbike.services.AncoraService;
+import br.com.UWbike.services.PatioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +18,14 @@ public class AncoraController {
     @Autowired
     private AncoraService ancoraService;
 
+    @Autowired
+    private PatioService patioService;
+
     @PostMapping
     public ResponseEntity<AncoraResponseDto> cadastrarAncora(@Valid @RequestBody AncoraRequestDto ancoraRequestDto) throws IdNaoEncontradoException {
         Ancora ancora = new Ancora(ancoraRequestDto.getX(), ancoraRequestDto.getY());
+
+        ancoraRequestDto.setPatio( patioService.visualizarDadosPatioEspecifica(ancoraRequestDto.getIdPatio()).orElseThrow(() -> new IdNaoEncontradoException("Pátio não encontrado")));
         Ancora ancoraSalva = ancoraService.salvarAncoraComPatio(ancora, ancoraRequestDto.getIdPatio());
         return ResponseEntity.ok(new AncoraResponseDto(ancoraSalva.getId(),ancoraSalva.getX(),ancoraSalva.getY(),ancoraRequestDto.getPatio()));
     }
@@ -34,13 +40,13 @@ public class AncoraController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<AncoraResponseDto> atualizarAncora(@PathVariable Long id, @Valid @RequestBody AncoraRequestDto ancoraRequestDto) {
-
+    public ResponseEntity<AncoraResponseDto> atualizarAncora(@PathVariable Long id, @Valid @RequestBody AncoraRequestDto ancoraRequestDto) throws IdNaoEncontradoException {
+        Ancora ancoraAntiga = ancoraService.visualizarDadosAncoraEspecifica(id).orElseThrow(() -> new IdNaoEncontradoException("Pátio não encontrado"));
         Ancora novaAncora = new Ancora(ancoraRequestDto.getX(), ancoraRequestDto.getY());
 
         try {
             ancoraService.atualizarDadosAncora(id, novaAncora);
-            return ResponseEntity.ok(new AncoraResponseDto(id, ancoraRequestDto.getX(), ancoraRequestDto.getY(), ancoraRequestDto.getPatio()));
+            return ResponseEntity.ok(new AncoraResponseDto(id, novaAncora.getX(), novaAncora.getY(),ancoraAntiga.getPatio()));
         } catch (IdNaoEncontradoException e) {
             System.out.println(e.getMessage());
             return ResponseEntity.notFound().build();

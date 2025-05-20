@@ -59,6 +59,7 @@ public class Patio {
     private List<MotoPatio> entradas;
 
     @OneToMany(mappedBy = "patio", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference("ancoraRef")
     private List<Ancora> ancoras;
 
     public List<Ancora> getAncoras() {
