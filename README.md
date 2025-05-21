@@ -22,7 +22,8 @@ Desenvolver uma aplicação que:
 
 
 ## ⚙️ Etapas para rodar o projeto:
-### 1 - Instale o JDK 21
+### 1 - Instale o JDK 21 caso não tenha em sua máquina
+### 2 - Coloque suas credenciais do oracle sql developer no arquivo application.properties
 ### 2 - Teste as requisições pelo postman/navegador/etc assim como foram feitas nos prints demonstrativos
 
 
