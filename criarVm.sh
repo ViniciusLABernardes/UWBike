@@ -1,0 +1,2 @@
+
+az vm create --resource-group rg-vm-challenge --name vm-alma --image almalinux:almalinux-x86_64:9-gen2:latest --size Standard_B2s --nsg nsgsr-linux --public-ip-address pip-ubuntu --authentication-type password --storage-sku Standard_LRS --admin-username adminfiap --admin-password FIAP@2TDS2025
