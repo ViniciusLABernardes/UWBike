@@ -146,3 +146,6 @@ Desenvolver uma aplicação que:
 ![imagem](https://github.com/user-attachments/assets/28d0f05b-5d63-4097-a9c9-41745d6b2e19)
 
 
+## Link do video da sprint de DevOps:
+
+https://www.youtube.com/watch?v=BYlaKtz7O3Y
