@@ -126,6 +126,27 @@ Desenvolver uma aplicação que:
 
 ### Pegar posicionamento da moto:
 #### OBS** Como atualmente ainda não temos o hardware e não simulamos as placas esp32, estamos testando com dados mockados, cada parametro desta função com o nome "d" refere-se as distâncias que o ESP32 com UWB captaria em relação às âncoras fixas.
+### Exemplo de 3 âncoras posicionadas em um pátio de 40m2:
+{
+  "x": 0,
+  "y": 0,
+  "idPatio": 2
+}
+
+ancora 2:
+{
+  "x": 6.32,
+  "y": 0,
+  "idPatio": 2
+}
+
+ancora 3:
+{
+  "x": 3.16,
+  "y": 6.32,
+  "idPatio": 2
+}
+
 
 ![posicaoMoto](https://github.com/user-attachments/assets/f2c79f3d-73a3-4e42-9e52-820d1100205a)
 
